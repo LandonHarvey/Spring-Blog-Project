@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>roll-dice</title>
+</head>
+<body>
+    <h1 th:if="${userGuess}">User Guess: <span th:text="${userGuess}"></span></h1>
+    <ul> Random Numbers out of <span th:text="${rolls}"></span> Rolls:
+    <span th:each="number : ${randomNumber}">
+        <span th:text="${number}"></span>
+    </span>
+    </ul>
+    <h1 th:="${wins}"><span th:text="${wins}"></span></h1>
+    <ul>Guess A Number:
+        <li><a href="/roll-dice/1/6">1</a></li>
+        <li><a href="/roll-dice/2/6">2</a></li>
+        <li><a href="/roll-dice/3/6">3</a></li>
+        <li><a href="/roll-dice/4/6">4</a></li>
+        <li><a href="/roll-dice/5/6">5</a></li>
+        <li><a href="/roll-dice/6/6">6</a></li>
+    </ul>
+</body>
+</html>
