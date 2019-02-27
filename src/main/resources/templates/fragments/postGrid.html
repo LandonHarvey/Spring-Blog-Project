@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="gridRow">
+    <div th:each="post : ${posts}" class="w3-third">
+        <img th:attr="src=@{/img/samwise-gamgee-300x184.jpg}" style="width:100%" onclick="onClick(this)" alt="A boy surrounded by beautiful nature"/>
+        <a th:href="@{posts/{id} (id = ${post.id})}"><h1 th:text="${post.title}"></h1></a>
+        <p th:text="${post.body}"></p>
+        <hr/>
+    </div>
+</div>
+</body>
+</html>

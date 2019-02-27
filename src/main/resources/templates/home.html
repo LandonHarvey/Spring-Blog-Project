@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/fragments/partials :: header('hi')"/>
+<body class="w3-light-grey w3-content" style="max-width:1600px">
+    <nav th:replace="/fragments/partials :: navbar" />
+    <nav th:replace="/fragments/partials :: mobileNavbar"/>
+    <div class="w3-main" style="margin-left:300px">
+        <div class="w3-hide-large" style="margin-top:83px"></div>
+            <div class="w3-row">
+                <div th:replace="/fragments/postGrid :: gridRow"></div>
+            </div>
+    <div th:replace="/fragments/Partials :: morePages"></div>
+    <div th:replace="/fragments/About :: aboutme"></div>
+    <div th:replace="/fragments/contact :: contact"></div>
+    <footer th:replace="/fragments/footer :: footer"></footer>
+    </div>
+</body>
+</html>
+
