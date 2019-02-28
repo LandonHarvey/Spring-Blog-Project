@@ -30,17 +30,21 @@ var grid = clickableGrid(18,18,function(el,row,col,i){
         oldOrcs[p].className = "";
     }
 
-    let orcs = Math.round(Math.random() * (10 - 1) + 1);
+    let orcs = Math.round(Math.random() * (100 - 1) + 1);
     let orcsLocation = [];
 
     for (let p = 0; p < orcs; p++) {
         orcsLocation.push(Math.round(Math.random() * (324 - 1) + 1))
-        console.log(orcsLocation[p]);
 
         orcSlot = Array.from(document.querySelectorAll('td'))
             .find(el => el.textContent === orcsLocation[p] + "");
-        orcSlot.setAttribute("class", "orc")
-    }
+        orcSlot.setAttribute("class", "orc");
+            console.log(orcsLocation[p] + " " + i)
+            if (orcsLocation[p] === i) {
+                window.location.href = "/fight";
+                return false;
+            }
+        }
 
     el.className='clicked';
     if (lastClicked) lastClicked.className='';
@@ -79,12 +83,12 @@ if (starter === "95") {
 }
 
 let orcSlot;
-let orcs = Math.round(Math.random() * (10 - 1) + 1);
+let orcs = Math.round(Math.random() * (100 - 1) + 1);
 let orcsLocation = [];
 
 for (let p = 0; p < orcs; p++) {
     orcsLocation.push(Math.round(Math.random() * (324 - 1) + 1))
-    console.log(orcsLocation[p]);
+    // console.log(orcsLocation[p]);
 
     orcSlot = Array.from(document.querySelectorAll('td'))
         .find(el => el.textContent === orcsLocation[p] + "");

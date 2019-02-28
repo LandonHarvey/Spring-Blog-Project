@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments/partials :: header('Post Details')"></head>
+<body>
+
+<div th:replace="fragments/partials :: navbar"></div>
+
+<div class="w3-main" style="margin-left: 300px;">
+    <div th:fragment="gridRow">
+        <div class="w3-third">
+            <img src="/img/samwise-gamgee-300x184.jpg" style="width:100%" alt="A boy surrounded by beautiful nature"/>
+            <hr/>
+        </div>
+        <div class="w3-third">
+            <h1>FIGHT!!!!</h1>
+            <hr/>
+        </div>
+        <div class="w3-third">
+            <img src="/img/orc.jpg" style="width:100%" alt="A boy surrounded by beautiful nature"/>
+            <hr/>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
