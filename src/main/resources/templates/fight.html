@@ -9,9 +9,10 @@
     <div th:fragment="gridRow">
         <div class="w3-third">
             <img src="/img/samwise-gamgee-300x184.jpg" style="width:100%" alt="A boy surrounded by beautiful nature"/>
+            <p th:text="${adventure.title}"></p>
             <hr/>
         </div>
-        <div class="w3-third">
+        <div id="fightBox" class="w3-third">
             <h1>FIGHT!!!!</h1>
             <hr/>
         </div>

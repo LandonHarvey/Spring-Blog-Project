@@ -20,10 +20,4 @@ public class HomeController {
         model.addAttribute("posts", postDao.findAll());
         return "home";
     }
-
-    @GetMapping("/fight")
-    public String all(){
-
-        return "fight";
-    }
 }

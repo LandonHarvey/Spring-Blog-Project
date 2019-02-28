@@ -26,8 +26,24 @@ body,h1,h2,h3,h4,h5 {
     background-size: 100% 100%;
 }
 
-.orc {
+.orc1 {
     background: url("../img/orc.jpg");
+    background-size: 100% 100%;
+    color:transparent;
+}
+
+.orc2 {
+    background: url("../img/orc2.jpg");
+    background-size: 100% 100%;
+    color:transparent;
+}
+.orc3 {
+    background: url("../img/oldman.jpeg");
+    background-size: 100% 100%;
+    color:transparent;
+}
+.orc4 {
+    background: url("../img/urak1.jpg");
     background-size: 100% 100%;
     color:transparent;
 }
@@ -43,4 +59,13 @@ body,h1,h2,h3,h4,h5 {
     background-image:url("../img/samwise-gamgee-300x184.jpg");
     background-size: 100% 100%;
     color:transparent;
+}
+
+#fightBox{
+    display: flex;
+    justify-content: center;
+}
+
+.hiddenForm {
+    visibility: hidden; display: none;
 }

@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="adventure")
-public class Post {
+public class Adventure {
     @Id @GeneratedValue
     private long id;
     @Column(nullable = false, length = 100)
@@ -15,17 +15,23 @@ public class Post {
     private String imgURL;
     @Column(nullable = false, length = 5)
     private long postion = 95;
+    @Column(nullable = false, length = 100)
+    private long health = 100;
+    @Column(nullable = false, length = 100)
+    private long healing = 3;
+    @Column(nullable = false, length = 100)
+    private long arrows = 50;
 
-    public Post(){}
+    public Adventure(){}
 
-    public Post(long id, String title, String body, String imgURL) {
+    public Adventure(long id, String title, String body, String imgURL) {
         this.id = id;
         this.title = title;
         this.body = body;
         this.imgURL = imgURL;
     }
 
-    public Post(String title, String body, String imgURL) {
+    public Adventure(String title, String body, String imgURL) {
         this.title = title;
         this.body = body;
         this.imgURL = imgURL;
