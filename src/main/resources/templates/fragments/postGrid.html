@@ -6,9 +6,9 @@
 </head>
 <body>
 <div th:fragment="gridRow">
-    <div th:each="adventure : ${posts}" class="w3-third">
+    <div th:each="adventure : ${adventures}" class="w3-third">
         <img th:attr="src=@{/img/samwise-gamgee-300x184.jpg}" style="width:100%" onclick="onClick(this)" alt="A boy surrounded by beautiful nature"/>
-        <a th:href="@{posts/{id} (id = ${adventure.id})}"><h1 th:text="${adventure.title}"></h1></a>
+        <a th:href="@{adventures/{id} (id = ${adventure.id})}"><h1 th:text="${adventure.title}"></h1></a>
         <p th:text="${adventure.body}"></p>
         <hr/>
     </div>

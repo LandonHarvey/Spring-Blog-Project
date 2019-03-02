@@ -20,19 +20,19 @@ var grid = clickableGrid(18,18,function(el,row,col,i){
     //trying to remove orc classes
     for (let p = 0; p < oldOrc1.length -1; p++) {
         oldOrc1[p].className = "";
-        console.log("done" + oldOrc1[p]);
+        // console.log("done" + oldOrc1[p]);
     }
     for (let p = 0; p < oldOrc2.length -1; p++) {
         oldOrc2[p].className = "";
-        console.log("done" + oldOrc2[p]);
+        // console.log("done" + oldOrc2[p]);
     }
     for (let p = 0; p < oldOrc3.length -1; p++) {
         oldOrc3[p].className = "";
-        console.log("done" + oldOrc3[p]);
+        // console.log("done" + oldOrc3[p]);
     }
     for (let p = 0; p < oldOrc4.length -1; p++) {
         oldOrc4[p].className = "";
-        console.log("done" + oldOrc4[p]);
+        // console.log("done" + oldOrc4[p]);
     }
 
     // random number of orcs on map
@@ -49,13 +49,15 @@ var grid = clickableGrid(18,18,function(el,row,col,i){
             .find(el => el.textContent === orcsLocation[p] + "");
         orcSlot.setAttribute("class", orcImage[num]);
 
-        console.log(orcsLocation[p] + " " + i);
+        // clicks hidden button and goes to fight screen
+        // console.log(orcsLocation[p] + " " + i);
         if (orcsLocation[p] === i) {
             document.getElementsByClassName("hiddenForm")[1].click();
             return false;
         }
     }
 
+    // makes everything equal to correct positions
     el.className='clicked';
     if (lastClicked) lastClicked.className='';
     lastClicked = el;
@@ -71,6 +73,7 @@ gridz.appendChild(grid);
 
 //starts grid
 function clickableGrid( rows, cols, callback ){
+    console.log("continue")
     var i=0;
     var grid = document.createElement('table');
     grid.className = 'grid';
@@ -80,9 +83,21 @@ function clickableGrid( rows, cols, callback ){
             var cell = tr.appendChild(document.createElement('td'));
             cell.innerHTML = ++i;
             cell.addEventListener('click',(function(el,r,c,i){
-                return function(){
-                    callback(el,r,c,i);
-                }
+                    return function () {
+
+                    // checks if the clicked element is within one square around of sam
+                        let test = i === (position.value -1)
+                            || i === (position.value - 17)
+                            || i === (position.value - 18)
+                            || i === (position.value - 19)
+                            || i === (parseInt(position.value) + 1)
+                            || i === (parseInt(position.value) + 17)
+                            || i === (parseInt(position.value) + 18)
+                            || i === (parseInt(position.value) + 19);
+                        if (test) {
+                            callback(el, r, c, i);
+                        }
+                    }
             })(cell,r,c,i),false);
         }
     }
@@ -101,7 +116,7 @@ let orcImage = ["orc", "orc2", "orc3", "orc4"];
 for (let p = 0; p < orcs; p++) {
     orcsLocation.push(Math.round(Math.random() * (324 - 1) + 1))
     let num = Math.round(Math.random() * (3 - 0) + 0);
-    console.log(orcImage[num] + num);
+    // console.log(orcImage[num] + num);
     orcSlot = Array.from(document.querySelectorAll('td'))
         .find(el => el.textContent === orcsLocation[p] + "");
     orcSlot.setAttribute("class", orcImage[num])

@@ -11,13 +11,13 @@
         <p th:text="${adventure.body}"></p>
         <input type="hidden" name="id" id="id" th:value="${adventure.id}"/>
         <div>
-            <form th:action="@{/posts/{id}/save (id = ${adventure.id})}" method="POST">
+            <form th:action="@{/adventures/{id}/save (id = ${adventure.id})}" method="POST">
                 <input type="hidden" name="position" id="position" th:value="${adventure.postion}"/>
                 <input type="hidden" name="save" id="save" th:value="'save'"/>
                 <button type="submit">Save Progress</button>
             </form>
         </div>
-        <form class="hiddenForm" th:action="@{/posts/{id}/saveb4 (id = ${adventure.id})}" method="POST">
+        <form class="hiddenForm" th:action="@{/adventures/{id}/saveb4 (id = ${adventure.id})}" method="POST">
             <input type="hidden" name="position" id="position1" th:value="${adventure.postion}"/>
             <button class="hiddenForm" type="submit"></button>
         </form>

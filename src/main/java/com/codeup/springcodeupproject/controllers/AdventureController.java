@@ -1,32 +1,34 @@
 package com.codeup.springcodeupproject.controllers;
 
 import com.codeup.springcodeupproject.models.Adventure;
-import com.codeup.springcodeupproject.repositories.PostRepository;
+import com.codeup.springcodeupproject.models.AdventureLog;
+import com.codeup.springcodeupproject.repositories.AdventureLogRepository;
+import com.codeup.springcodeupproject.repositories.AdventureRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-class PostController {
+class AdventureController {
 
-    private final PostRepository postDao;
+    private final AdventureLogRepository adLogDao;
 
-    public PostController (PostRepository postDao){
-        this.postDao = postDao;
+    public AdventureController(AdventureLogRepository adLogDao){
+        this.adLogDao = adLogDao;
     }
 
-    @GetMapping("posts/{id}")
+    @GetMapping("adventures/{id}")
     public String show(@PathVariable long id, Model model){
 
-        model.addAttribute("adventure", postDao.findOne(id));
+        model.addAttribute("adventure", adLogDao.findOne(id));
 
-        return "posts/show";
+        return "adventures/show";
     }
 
     @GetMapping("create")
     public String showForm(Model model){
         model.addAttribute("adventure", new Adventure());
-        return "posts/create";
+        return "adventures/create";
     }
 
     @PostMapping("create")
@@ -42,31 +44,25 @@ class PostController {
         return "redirect:/";
     }
 
-    @PostMapping("/posts/{id}/save")
+    @PostMapping("/adventures/{id}/save")
     public String savePosition(
             @PathVariable long id,
             @RequestParam(name = "position") long position
     ){
         Adventure adventure = postDao.findOne(id);
-        adventure.setPostion(position);
+//        adventure.setPostion(position);
         postDao.save(adventure);
-        return "redirect:/posts/{id}";
+        return "redirect:/adventures/{id}";
     }
 
-    @PostMapping("/posts/{id}/saveb4")
+    @PostMapping("/adventures/{id}/saveb4")
     public String savePositionb4(
             @PathVariable long id,
             @RequestParam(name = "position") long position
     ){
         Adventure adventure = postDao.findOne(id);
-        adventure.setPostion(position);
+//        adventure.setPostion(position);
         postDao.save(adventure);
-        return "redirect:/posts/{id}/fight";
-    }
-
-    @GetMapping("/posts/{id}/fight")
-    public String fight(@PathVariable long id, Model model){
-        model.addAttribute("adventure", postDao.findOne(id));
-        return "fight";
+        return "redirect:/adventures/{id}/fight";
     }
 }

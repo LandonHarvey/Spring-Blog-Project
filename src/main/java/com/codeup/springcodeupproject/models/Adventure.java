@@ -3,24 +3,17 @@ package com.codeup.springcodeupproject.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name="adventure")
+@Table(name="Adventure")
 public class Adventure {
+
     @Id @GeneratedValue
     private long id;
     @Column(nullable = false, length = 100)
     private String title;
     @Column(nullable = false, length = 200)
     private String body;
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 200)
     private String imgURL;
-    @Column(nullable = false, length = 5)
-    private long postion = 95;
-    @Column(nullable = false, length = 100)
-    private long health = 100;
-    @Column(nullable = false, length = 100)
-    private long healing = 3;
-    @Column(nullable = false, length = 100)
-    private long arrows = 50;
 
     public Adventure(){}
 
@@ -69,11 +62,4 @@ public class Adventure {
         this.imgURL = imgURL;
     }
 
-    public long getPostion() {
-        return postion;
-    }
-
-    public void setPostion(long postion) {
-        this.postion = postion;
-    }
 }
