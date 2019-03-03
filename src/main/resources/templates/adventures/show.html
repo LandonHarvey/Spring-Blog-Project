@@ -7,15 +7,18 @@
 <div class="w3-main" style="margin-left: 300px;">
     <main>
         <img src="/img/samwise-gamgee-300x184.jpg" style="width:100%" alt="A boy surrounded by beautiful nature"/>
-        <h1 th:text="${adventure.title}"></h1>
-        <p th:text="${adventure.body}"></p>
+        <h1 th:text="${adventure.adventure.getTitle()}"></h1>
+        <p th:text="${adventure.adventure.getTitle()}"></p>
         <input type="hidden" name="id" id="id" th:value="${adventure.id}"/>
         <div>
             <form th:action="@{/adventures/{id}/save (id = ${adventure.id})}" method="POST">
-                <input type="hidden" name="position" id="position" th:value="${adventure.postion}"/>
+                <input type="hidden" name="position" id="position" th:value="${adventure[0].postion}"/>
                 <input type="hidden" name="save" id="save" th:value="'save'"/>
                 <button type="submit">Save Progress</button>
             </form>
+        </div>
+        <div th:each="ad : ${adventure.adventurerList}">
+            <p th:text="${ad.getName()}"></p>
         </div>
         <form class="hiddenForm" th:action="@{/adventures/{id}/saveb4 (id = ${adventure.id})}" method="POST">
             <input type="hidden" name="position" id="position1" th:value="${adventure.postion}"/>

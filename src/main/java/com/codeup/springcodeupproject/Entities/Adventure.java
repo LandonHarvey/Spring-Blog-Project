@@ -1,4 +1,6 @@
-package com.codeup.springcodeupproject.models;
+package com.codeup.springcodeupproject.Entities;
+
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 
@@ -14,20 +16,26 @@ public class Adventure {
     private String body;
     @Column(nullable = false, length = 200)
     private String imgURL;
+    @OneToOne
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    @JoinColumn(name = "adventurelog_id")
+    private AdventureLog adventureLog;
 
     public Adventure(){}
 
-    public Adventure(long id, String title, String body, String imgURL) {
+    public Adventure(long id, String title, String body, String imgURL, AdventureLog adventureLog) {
         this.id = id;
         this.title = title;
         this.body = body;
         this.imgURL = imgURL;
+        this.adventureLog = adventureLog;
     }
 
-    public Adventure(String title, String body, String imgURL) {
+    public Adventure(String title, String body, String imgURL, AdventureLog adventureLog) {
         this.title = title;
         this.body = body;
         this.imgURL = imgURL;
+        this.adventureLog = adventureLog;
     }
 
     public long getId() {
@@ -62,4 +70,11 @@ public class Adventure {
         this.imgURL = imgURL;
     }
 
+    public AdventureLog getAdventureLog() {
+        return adventureLog;
+    }
+
+    public void setAdventureLog(AdventureLog adventureLog) {
+        this.adventureLog = adventureLog;
+    }
 }

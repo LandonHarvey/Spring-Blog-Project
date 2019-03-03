@@ -1,15 +1,17 @@
 package com.codeup.springcodeupproject.repositories;
 
-import com.codeup.springcodeupproject.Entities.Adventure;
+import com.codeup.springcodeupproject.Entities.Adventurer;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-public interface AdventureRepository extends CrudRepository<Adventure, Long> {
+import java.util.List;
 
-    @Query(value = "SELECT *\n" +
-            "FROM adventure\n" +
+public interface AdventurerRepository extends CrudRepository<Adventurer, Long> {
+
+    @Query(value = "SELECT * " +
+            "FROM adventurer " +
             "WHERE adventurelog_id = :id"
             , nativeQuery = true)
-   Adventure getAdventureBy(@Param("id") long id);
+    List<Adventurer> getAllAdventurerById(@Param("id") long id);
 }

@@ -8,13 +8,28 @@
 <div class="w3-main" style="margin-left: 300px;">
     <main>
         <h2>Create a new adventure</h2>
-        <form th:action="@{/create}" th:method="adventure" th:object="${adventure}">
-                Title
+        <!--<form th:action="@{/create}" th:method="adventure" th:object="${adventure}">-->
+        <form th:action="@{/create}" th:method="post">
+            <div>
+                Adventure Title
                 <input th:field="*{title}" minlength="5" maxlength="50" value=""/>
-                Description
+                Adventure Description
                 <input th:field="*{body}" minlength="5" maxlength="200"/>
-                Image URL
+                Adventure Image URL
                 <input th:field="*{imgURL}" minlength="5" maxlength="100"/>
+            </div>
+            <div>
+                Adventurer 1 Title
+                <input th:field="*{name1}" minlength="5" maxlength="50" value=""/>
+                Adventurer 1 Image URL
+                <input th:field="*{imgURL1}" minlength="5" maxlength="100"/>
+            </div>
+            <div>
+                Adventurer 2 Title
+                <input th:field="*{name2}" minlength="5" maxlength="50" value=""/>
+                Adventurer 2 Image URL
+                <input th:field="*{imgURL2}" minlength="5" maxlength="100"/>
+            </div>
             <input type="submit"/>
         </form>
     </main>
