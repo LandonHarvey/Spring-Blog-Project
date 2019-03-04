@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/partials :: header('Create a new adventure')"></head>
+
+<body>
+<nav th:replace="/fragments/partials :: navbar" />
+<nav th:replace="/fragments/partials :: mobileNavbar"/>
+
+<div class="w3-main" style="margin-left:300px">
+    <div class="w3-hide-large" style="margin-top:83px"></div>
+    <h1>Create an account</h1>
+    <form th:action="@{/sign-up}" method="POST" th:object="${user}">
+        <label for="username">Username</label>
+        <input id="username" th:field="*{username}" />
+
+        <label for="email">Email</label>
+        <input id="email" th:field="*{email}" />
+
+        <label for="password">Password</label>
+        <input id="password" type="password" th:field="*{password}" />
+
+        <input value="Sign me up!" type="submit" />
+    </form>
+<footer th:replace="/fragments/footer :: footer"></footer>
+</div>
+</body>
+</html>

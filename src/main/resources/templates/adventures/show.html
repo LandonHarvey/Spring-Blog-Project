@@ -4,24 +4,26 @@
 <body>
 
 <div th:replace="fragments/partials :: navbar"></div>
+<nav th:replace="/fragments/partials :: mobileNavbar"/>
 <div class="w3-main" style="margin-left: 300px;">
+    <div class="w3-hide-large" style="margin-top:83px"></div>
     <main>
-        <img src="/img/samwise-gamgee-300x184.jpg" style="width:100%" alt="A boy surrounded by beautiful nature"/>
-        <h1 th:text="${adventure.adventure.title}"></h1>
-        <p th:text="${adventure.adventure.body}"></p>
-        <input type="hidden" name="id" id="id" th:value="${adventure.adventureLog.id}"/>
+        <img th:src="${adventure.imgURL}" style="width:100%" alt="A boy surrounded by beautiful nature"/>
+        <h1 th:text="${adventure.title}"></h1>
+        <p th:text="${adventure.body}"></p>
+        <input type="hidden" name="id" id="id" th:value="${adventure.id}"/>
         <div>
-            <form th:action="@{/adventures/{id}/save (id = ${adventure.adventureLog.id})}" method="POST">
-                <input type="hidden" name="position" id="position" th:value="${adventure.adventureLog.postion}"/>
+            <form th:action="@{/adventures/{id}/save (id = ${adventure.id})}" method="POST">
+                <input type="hidden" name="position" id="position" th:value="${adventure.position}"/>
                 <input type="hidden" name="save" id="save" th:value="'save'"/>
                 <button type="submit">Save Progress</button>
             </form>
         </div>
-        <div th:each="ad : ${adventure.adventurer}">
+        <div th:each="ad : ${adventure.getAdventurerList()}">
             <p th:text="${ad.name}"></p>
         </div>
-        <form class="hiddenForm" th:action="@{/adventures/{id}/saveb4 (id = ${adventure.adventureLog.id})}" method="POST">
-            <input type="hidden" name="position" id="position1" th:value="${adventure.adventureLog.postion}"/>
+        <form class="hiddenForm" th:action="@{/adventures/{id}/saveb4 (id = ${adventure.id})}" method="POST">
+            <input type="hidden" name="position" id="position1" th:value="${adventure.position}"/>
             <button class="hiddenForm" type="submit"></button>
         </form>
     </main>

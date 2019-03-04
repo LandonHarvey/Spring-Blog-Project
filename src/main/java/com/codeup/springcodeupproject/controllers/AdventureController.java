@@ -1,50 +1,43 @@
 package com.codeup.springcodeupproject.controllers;
 
-import com.codeup.springcodeupproject.models.Adventure;
-import com.codeup.springcodeupproject.models.AdventureLog;
-import com.codeup.springcodeupproject.models.Adventurer;
-import com.codeup.springcodeupproject.models.fullAdventure;
-import com.codeup.springcodeupproject.repositories.AdventureLogRepository;
+import com.codeup.springcodeupproject.models.*;
 import com.codeup.springcodeupproject.repositories.AdventureRepository;
 import com.codeup.springcodeupproject.repositories.AdventurerRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 class AdventureController {
 
-    private final AdventureLogRepository adLogDao;
     private final AdventureRepository advDao;
     private final AdventurerRepository advrDao;
 
-    public AdventureController(AdventureLogRepository adLogDao, AdventureRepository advDao, AdventurerRepository advrDao){
-        this.adLogDao = adLogDao;
+    public AdventureController(AdventureRepository advDao, AdventurerRepository advrDao){
         this.advDao = advDao;
         this.advrDao = advrDao;
     }
 
     @GetMapping("adventures/{id}")
     public String show(@PathVariable long id, Model model){
+//
+//        List<Adventurer> adventurers = advrDao.getAllAdventurerById(id);
+        Adventure adventure = advDao.findOne(id);
+        System.out.println("Adventurer List: " +adventure.getAdventurerList());
 
-        List<Adventurer> adventurers = advrDao.getAllAdventurerById(id);
-        Adventure adventure = advDao.getAdventureBy(id);
-        AdventureLog adventureLog = adLogDao.findOne(id);
-
-        fullAdventure fullAdventure = new fullAdventure(adventureLog, adventure, adventurers);
-
-        model.addAttribute("adventure", fullAdventure);
+        model.addAttribute("adventure", adventure);
         return "adventures/show";
     }
 
     @GetMapping("create")
 //    public String showForm(Model model){
     public String showForm(Model model){
-//        model.addAttribute("adventure", new Adventure());
-//        model.addAttribute("adventurer", new Adventure());
-//        model.addAttribute("adventure", new Adventure());
+        model.addAttribute("adventurer1", new Adventurer());
+        model.addAttribute("adventurer2", new Adventurer());
+        model.addAttribute("adventure", new Adventure());
         return "adventures/create";
     }
 
@@ -60,20 +53,27 @@ class AdventureController {
             @RequestParam(name = "name2") String name2,
             @RequestParam (name = "imgURL2") String imgUrl2
         ){
-//        Adventure adventure = new Adventure();
-//        adLogDao.save(adventure);
-//
-////        long id, String title, String body, String imgURL, AdventureLogModel adventureLog
-//        Adventure adventure = new Adventure(title, body, imgUrl, adventureLog);
-//        Adventurer adventurer = new Adventurer(name1, imgUrl1, adventureLog);
-//        if (name2.equals("")) {
-//            Adventurer adventurer2 = new Adventurer(name2, imgUrl2, adventureLog);
-//            advrDao.save(adventurer2);
-//        }
-//        advDao.save(adventure);
-//        advrDao.save(adventurer);
-//
 
+        // creates adventure
+        Adventure adventure = new Adventure(title, body, imgUrl);
+
+        //Creates list of adventurers
+        List<Adventurer> adventurerList = new ArrayList<>();
+
+        // Creates Adventurers or Singular
+        Adventurer adventurer = new Adventurer(name1, imgUrl1);
+        adventurerList.add(adventurer);
+
+        if (!name2.equals("")) {
+            Adventurer adventurer2 = new Adventurer(name2, imgUrl2);
+            adventurerList.add(adventurer2);
+            adventure.setAdventurerList(adventurerList);
+            advDao.save(adventure);
+            return "redirect:/";
+        }
+
+        adventure.setAdventurerList(adventurerList);
+        advDao.save(adventure);
         return "redirect:/";
     }
 
@@ -82,9 +82,9 @@ class AdventureController {
             @PathVariable long id,
             @RequestParam(name = "position") long position
     ){
-        AdventureLog adventureLog = adLogDao.findOne(id);
-        adventureLog.setPostion(position);
-        adLogDao.save(adventureLog);
+        Adventure adventure = advDao.findOne(id);
+        adventure.setPosition(position);
+        advDao.save(adventure);
         return "redirect:/adventures/{id}";
     }
 
@@ -93,9 +93,9 @@ class AdventureController {
             @PathVariable long id,
             @RequestParam(name = "position") long position
     ){
-        AdventureLog adventureLog = adLogDao.findOne(id);
-//        adventure.setPostion(position);
-        adLogDao.save(adventureLog);
+        Adventure adventure = advDao.findOne(id);
+        adventure.setPosition(position);
+        advDao.save(adventure);
         return "redirect:/adventures/{id}/fight";
     }
 }

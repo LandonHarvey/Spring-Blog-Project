@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:fragment="header(title)">
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"/>
     <link rel="stylesheet" href="/css/partials.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
 </head>
 
 <body>
@@ -24,9 +25,12 @@
     <br/>
     <h3 class="w3-padding-64 w3-center"><b>Landon<br/>Harvey</b></h3>
     <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-hide-large">CLOSE</a>
-    <a href="/#" onclick="w3_close()" class="w3-bar-item w3-button">Adventures</a>
+    <a sec:authorize="!isAuthenticated()" href="/login" class="w3-bar-item w3-button">LOGIN/SIGNUP</a>
+    <a href="/#" onclick="w3_close()" class="w3-bar-item w3-button">ADVENTURES</a>
+    <a href="/create" class="w3-bar-item w3-button">CREATE ADVENTURES</a>
     <a href="/#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT ME</a>
     <a href="/#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+    <a sec:authorize="isAuthenticated()" href="/logout" class="w3-bar-item w3-button">LOGOUT</a>
 </nav>
 
 <!--more pages-->

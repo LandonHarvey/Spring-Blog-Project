@@ -7,8 +7,8 @@
 <body>
 <div th:fragment="gridRow">
     <div th:each="adventure : ${adventures}" class="w3-third">
-        <img th:attr="src=@{/img/samwise-gamgee-300x184.jpg}" style="width:100%" onclick="onClick(this)" alt="A boy surrounded by beautiful nature"/>
-        <a th:href="@{adventures/{id} (id = ${adventure.adventureLog.getId()})}"><h1 th:text="${adventure.title}"></h1></a>
+        <img th:src="${adventure.imgURL}" style="width:100%" onclick="onClick(this)" alt="A boy surrounded by beautiful nature"/>
+        <a th:href="@{adventures/{id} (id = ${adventure.getId()})}"><h1 th:text="${adventure.title}"></h1></a>
         <p th:text="${adventure.body}"></p>
         <hr/>
     </div>

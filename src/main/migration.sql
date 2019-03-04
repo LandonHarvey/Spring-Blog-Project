@@ -4,28 +4,37 @@ USE adventures_db;
 DROP DATABASE adventures_db;
 CREATE DATABASE adventures_db;
 
-
 DROP TABLE IF EXISTS adventure;
 DROP TABLE IF EXISTS orc;
 DROP TABLE IF EXISTS adventurer;
 DROP TABLE IF EXISTS user;
-DROP TABLE IF EXISTS adventurelog;
 
-INSERT INTO adventure_log(postion)
-  VALUE (95);
+INSERT INTO user(username, password, email)
+  VALUE ('123', 'jeff3', 'swagdude@bob.com');
 
-INSERT INTO user(password, username)
-  VALUE ('123', 'jeff3');
+INSERT INTO adventure(body, imgurl, title)
+VALUE ('adventure of a lifetime','totallyurl','hello');
 
-INSERT INTO adventure(body, imgurl, title, adventurelog_id)
-VALUE ('adventure of a lifetime','totallyurl','hello',1);
+INSERT INTO adventurer(arrows, healing, health, imgurl, level, name, user_id)
+  VALUE (2,3,4,'hello',1,'jeff',1);
 
-INSERT INTO adventurer(arrows, healing, health, imgurl, level, name, user_id, adventurelog_id)
-  VALUE (2,3,4,'hello',1,'jeff',1, 1);
+INSERT INTO adventurer(arrows, healing, health, imgurl, level, name, user_id)
+  VALUE (2,3,4,'asdfasdfasd',1,'dafsdfasdfsadfdsafdasfsdafa',1);
 
-INSERT INTO adventurer(arrows, healing, health, imgurl, level, name, user_id, adventurelog_id)
-  VALUE (2,3,4,'asdfasdfasd',1,'dafsdfasdfsadfdsafdasfsdafa',1, 1);
+INSERT INTO adv_adventurers(adventure_id, adventurer_id)
+VALUES (1,1);
 
+INSERT INTO adv_adventurers(adventure_id, adventurer_id)
+VALUES (1,2);
+
+INSERT INTO orc(health,healing,arrows,imgurl)
+VALUES (10, 2,20,'/resources/static/img/orc.jpg');
+
+INSERT INTO orc(health,healing,arrows,imgurl)
+VALUES (5, 2,50,'/resources/static/img/orc2.jpg');
+
+INSERT INTO orc(health,healing,arrows,imgurl)
+VALUES (15, 1,0,'/resources/static/img/urak1,jpg');
 
 SELECT
       a.id as id, adv.id as advid, adv.body as advbody, adv.imgurl as advimage, adv.title as advtitle, adv.adventurelog_id as adid,
