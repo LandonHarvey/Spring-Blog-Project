@@ -1,4 +1,4 @@
-package com.codeup.springcodeupproject.Entities;
+package com.codeup.springcodeupproject.models;
 
 import org.hibernate.annotations.Cascade;
 
@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "AdventureLogModel")
+@Table(name = "AdventureLog")
 public class AdventureLog {
 
     @Id

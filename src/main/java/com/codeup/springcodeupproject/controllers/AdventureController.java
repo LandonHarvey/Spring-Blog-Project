@@ -1,8 +1,9 @@
 package com.codeup.springcodeupproject.controllers;
 
-import com.codeup.springcodeupproject.Entities.Adventure;
-import com.codeup.springcodeupproject.Entities.AdventureLog;
-import com.codeup.springcodeupproject.Entities.Adventurer;
+import com.codeup.springcodeupproject.models.Adventure;
+import com.codeup.springcodeupproject.models.AdventureLog;
+import com.codeup.springcodeupproject.models.Adventurer;
+import com.codeup.springcodeupproject.models.fullAdventure;
 import com.codeup.springcodeupproject.repositories.AdventureLogRepository;
 import com.codeup.springcodeupproject.repositories.AdventureRepository;
 import com.codeup.springcodeupproject.repositories.AdventurerRepository;
@@ -32,9 +33,9 @@ class AdventureController {
         Adventure adventure = advDao.getAdventureBy(id);
         AdventureLog adventureLog = adLogDao.findOne(id);
 
-        model.addAttribute("adventurelog", adventureLog);
-        model.addAttribute("adventure", adventure);
-        model.addAttribute("adventurers", adventurers);
+        fullAdventure fullAdventure = new fullAdventure(adventureLog, adventure, adventurers);
+
+        model.addAttribute("adventure", fullAdventure);
         return "adventures/show";
     }
 

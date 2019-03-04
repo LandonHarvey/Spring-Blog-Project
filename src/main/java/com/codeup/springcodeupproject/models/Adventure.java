@@ -1,4 +1,4 @@
-package com.codeup.springcodeupproject.Entities;
+package com.codeup.springcodeupproject.models;
 
 import org.hibernate.annotations.Cascade;
 

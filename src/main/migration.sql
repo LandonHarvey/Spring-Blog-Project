@@ -24,7 +24,7 @@ INSERT INTO adventurer(arrows, healing, health, imgurl, level, name, user_id, ad
   VALUE (2,3,4,'hello',1,'jeff',1, 1);
 
 INSERT INTO adventurer(arrows, healing, health, imgurl, level, name, user_id, adventurelog_id)
-  VALUE (2,3,4,'hello',1,'BOB',1, 1);
+  VALUE (2,3,4,'asdfasdfasd',1,'dafsdfasdfsadfdsafdasfsdafa',1, 1);
 
 
 SELECT

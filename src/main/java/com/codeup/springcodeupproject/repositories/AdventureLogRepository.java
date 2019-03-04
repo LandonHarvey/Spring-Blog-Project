@@ -1,7 +1,6 @@
 package com.codeup.springcodeupproject.repositories;
 
-import com.codeup.springcodeupproject.Entities.AdventureLog;
-import com.codeup.springcodeupproject.models.AdventureLogModel;
+import com.codeup.springcodeupproject.models.AdventureLog;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

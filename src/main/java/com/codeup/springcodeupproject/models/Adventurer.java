@@ -1,4 +1,4 @@
-package com.codeup.springcodeupproject.Entities;
+package com.codeup.springcodeupproject.models;
 
 import org.hibernate.annotations.Cascade;
 
@@ -31,6 +31,8 @@ public class Adventurer {
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @JoinColumn(name = "adventurelog_id")
     private AdventureLog adventureLog;
+
+    public Adventurer(){}
 
     public Adventurer(String name, String imgURL, long level, long health, long healing, long arrows, User user,AdventureLog adventureLog){
         this.name = name;
