@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments/partials :: header('Fight')"></head>
+<body>
+<input id="idcheck" type="hidden" th:value="${id}"/>
+<div th:replace="fragments/partials :: navbar"></div>
+<nav th:replace="/fragments/partials :: mobileNavbar"/>
+
+<div class="w3-main" style="margin-left: 300px;">
+    <div class="w3-hide-large" style="margin-top:83px"></div>
+    <div th:fragment="gridRow">
+        <div class="w3-third">
+            <div id="characters">
+
+            </div>
+        </div>
+        <div id="fightBox" class="w3-third">
+            <div id="actions">
+                <h1>FIGHT!!!!</h1>
+
+                <div class="dropdown mt-2">
+                    <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMeleeButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Melee
+                    </button>
+                    <div id="melee" class="dropdown-menu" aria-labelledby="dropdownMeleeButton">
+
+                    </div>
+                </div>
+
+                <div class="dropdown mt-2">
+                    <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownBowButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Bow
+                    </button>
+                    <div id="bow" class="dropdown-menu" aria-labelledby="dropdownBowButton">
+
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-dark mt-2">Defence</button>
+
+                <div class="dropdown mt-2">
+                    <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownHealButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Heal
+                    </button>
+                    <div id="heal" class="dropdown-menu" aria-labelledby="dropdownHealButton">
+
+                    </div>
+                </div>
+            </div>
+            <hr/>
+        </div>
+        <div class="w3-third">
+            <div id="orcs">
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/fight.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

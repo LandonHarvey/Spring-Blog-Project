@@ -1,5 +1,6 @@
 package com.codeup.springcodeupproject.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
@@ -37,6 +38,7 @@ public class Adventurer {
     private User user;
 
     @ManyToMany(mappedBy = "adventurerList")
+    @JsonBackReference
     private List<Adventure> adventures;
 
     public Adventurer(){}
