@@ -21,6 +21,7 @@
         </div>
         <div th:each="ad : ${adventure.getAdventurerList()}">
             <p th:text="${ad.name}"></p>
+            <img th:src="${ad.imgURL}" alt="Samuel" style="width:20%"/>
         </div>
         <form class="hiddenForm" th:action="@{/adventures/{id}/saveb4 (id = ${adventure.id})}" method="POST">
             <input type="hidden" name="position" id="position1" th:value="${adventure.position}"/>

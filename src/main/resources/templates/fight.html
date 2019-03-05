@@ -9,20 +9,42 @@
     <div class="w3-hide-large" style="margin-top:83px"></div>
     <div th:fragment="gridRow">
         <div class="w3-third">
-            <img src="/img/samwise-gamgee-300x184.jpg" style="width:100%" alt="A boy surrounded by beautiful nature"/>
-            <p th:text="${adventure.title}"></p>
-            <hr/>
+            <div th:each="char : ${adventure.getAdventurerList()}">
+                <img th:src="${char.imgURL}" style="width:70%" alt="Character Avatar"/>
+                <div class="floats">
+                    <p>Name: <span th:text="${char.name}"></span></p>
+                    <p>Level: <span th:text="${char.level}"></span></p>
+                    <p>Health: <span th:text="${char.health}"></span></p>
+                    <p>Healing: <span th:text="${char.healing}"></span></p>
+                    <p>Arrows: <span th:text="${char.arrows}"></span></p>
+                    <input type="hidden" th:value="${char.id}"/>
+                </div>
+                <hr/>
+            </div>
         </div>
         <div id="fightBox" class="w3-third">
             <h1>FIGHT!!!!</h1>
             <hr/>
         </div>
         <div class="w3-third">
-            <img src="/img/orc.jpg" style="width:100%" alt="A boy surrounded by beautiful nature"/>
-            <hr/>
+            <div th:each="orc : ${orcs}" class="orc">
+                <img th:src="${orc.imgURL}" style="width:50%; height: 50%;" alt="Orc Image"/>
+                <div class="floats">
+                    <p th:text="${'Arrows: ' + orc.health}"></p>
+                    <p th:text="${'Arrows: ' + orc.healing}"></p>
+                    <p th:text="${'Arrows: ' + orc.arrows}"></p>
+                    <input type="hidden" th:value="${orc.id}"/>
+                </div>
+                <hr/>
+            </div>
         </div>
     </div>
 </div>
-
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    let orcs = /*[[${orcs}]]*/ '';
+    /*]]>*/
+</script>
+<script type="text/javascript" src="/js/fight.js" />
 </body>
 </html>

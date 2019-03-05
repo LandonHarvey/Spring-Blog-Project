@@ -13,22 +13,26 @@
         <!--<form th:action="@{/create}" th:method="adventure" th:object="${adventure}">-->
         <form th:action="@{/create}" th:method="post">
             <div class="form-group">
-                <label for="title">Adventure Title</label>
-                <input id="title" name="title" minlength="5" maxlength="50" value=""/>
-                <label for="body">Adventure Description</label>
-                <input id="body" name="body" minlength="5" maxlength="200"/>
-                <label for="imgURL">Adventure Image URL</label>
-                <input id="imgURL" name="imgURL" minlength="5" maxlength="100"/>
-                <label for="name1">Adventurer 1 Name</label>
-                <input id="name1" name="name1" minlength="5" maxlength="50" value=""/>
-                <label for="imgURL1">Adventurer 1 Image URL</label>
-                <input id="imgURL1" name="imgURL1" minlength="5" maxlength="100"/>
-                <label for="name2">Adventurer 2 Name</label>
-                <input id="name2" name="name2" minlength="5" maxlength="50" value=""/>
-                <label for="imgURL2">Adventurer 2 Image URL</label>
-                <input id="imgURL2" name="imgURL2" minlength="5" maxlength="100"/>
+                    <label for="title">Adventure Title</label>
+                    <input id="title" name="title" minlength="5" maxlength="50" value=""/>
+                    <label for="body">Adventure Description</label>
+                    <input id="body" name="body" minlength="5" maxlength="200"/>
+                    <label for="imgURL">Adventure Image URL</label>
+                    <input id="imgURL" name="imgURL" minlength="5" maxlength="100"/>
             </div>
-            <input type="submit"/>
+                <div class="form-group">
+                    <label for="name1">Adventurer 1 Name</label>
+                    <input id="name1" name="name1" minlength="5" maxlength="50" value=""/>
+                    <label for="imgURL1">Adventurer 1 Image URL</label>
+                    <input id="imgURL1" name="imgURL1" minlength="5" maxlength="100"/>
+                </div>
+                <div class="form-group">
+                    <label for="name2">Adventurer 2 Name</label>
+                    <input id="name2" name="name2" minlength="5" maxlength="50" value=""/>
+                    <label for="imgURL2">Adventurer 2 Image URL</label>
+                    <input id="imgURL2" name="imgURL2" minlength="5" maxlength="100"/>
+                </div>
+                <input class="btn btn-success" type="submit"/>
         </form>
     </main>
     <footer th:replace="/fragments/footer :: footer"></footer>

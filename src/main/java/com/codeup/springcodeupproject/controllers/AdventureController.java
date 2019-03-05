@@ -41,6 +41,7 @@ class AdventureController {
         return "adventures/create";
     }
 
+    // create a full adventure
     @PostMapping("create")
     public String create(
             @RequestParam(name = "title") String title,
@@ -64,6 +65,7 @@ class AdventureController {
         Adventurer adventurer = new Adventurer(name1, imgUrl1);
         adventurerList.add(adventurer);
 
+        //Checks if a second player will join party
         if (!name2.equals("")) {
             Adventurer adventurer2 = new Adventurer(name2, imgUrl2);
             adventurerList.add(adventurer2);
@@ -77,6 +79,7 @@ class AdventureController {
         return "redirect:/";
     }
 
+    // posts save when save progress button clicked
     @PostMapping("/adventures/{id}/save")
     public String savePosition(
             @PathVariable long id,
@@ -88,6 +91,7 @@ class AdventureController {
         return "redirect:/adventures/{id}";
     }
 
+    // posts save when battle begins
     @PostMapping("/adventures/{id}/saveb4")
     public String savePositionb4(
             @PathVariable long id,

@@ -10,14 +10,20 @@
     <div class="w3-hide-large" style="margin-top:83px"></div>
     <h1>Create an account</h1>
     <form th:action="@{/sign-up}" method="POST" th:object="${user}">
-        <label for="username">Username</label>
-        <input id="username" th:field="*{username}" />
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input id="username" th:field="*{username}"/>
+        </div>
 
-        <label for="email">Email</label>
-        <input id="email" th:field="*{email}" />
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" th:field="*{email}"/>
+        </div>
 
-        <label for="password">Password</label>
-        <input id="password" type="password" th:field="*{password}" />
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input id="password" type="password" th:field="*{password}"/>
+        </div>
 
         <input value="Sign me up!" type="submit" />
     </form>

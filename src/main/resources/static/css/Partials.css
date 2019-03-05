@@ -69,3 +69,12 @@ body,h1,h2,h3,h4,h5 {
 .hiddenForm {
     visibility: hidden; display: none;
 }
+
+.floats {
+    float: right;
+}
+
+.floats > p {
+    margin: 0;
+    padding-right: .1em;
+}

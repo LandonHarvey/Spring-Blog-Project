@@ -64,4 +64,12 @@ public class Orc {
     public void setArrows(long arrows) {
         this.arrows = arrows;
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 }
