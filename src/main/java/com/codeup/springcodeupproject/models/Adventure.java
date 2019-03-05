@@ -1,34 +1,48 @@
 package com.codeup.springcodeupproject.models;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name="adventure")
+@Table(name="Adventure")
 public class Adventure {
+
     @Id @GeneratedValue
     private long id;
+
     @Column(nullable = false, length = 100)
     private String title;
+
     @Column(nullable = false, length = 200)
     private String body;
-    @Column(nullable = false, length = 100)
+
+    @Column(nullable = false, length = 200)
     private String imgURL;
-    @Column(nullable = false, length = 5)
-    private long postion = 95;
-    @Column(nullable = false, length = 100)
-    private long health = 100;
-    @Column(nullable = false, length = 100)
-    private long healing = 3;
-    @Column(nullable = false, length = 100)
-    private long arrows = 50;
+
+    @Column(name = "position", nullable = false, length = 5 , columnDefinition = "int default 95")
+    private long position = 95;
+
+    @Column(nullable = true, length = 4)
+    private String password;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name="adv_adventurers",
+            joinColumns={@JoinColumn(name="adventure_id")},
+            inverseJoinColumns={@JoinColumn(name="adventurer_id")}
+    )
+    private List<Adventurer> adventurerList;
 
     public Adventure(){}
 
-    public Adventure(long id, String title, String body, String imgURL) {
+    public Adventure(long id, String title, String body, String imgURL, List<Adventurer> adventureLog) {
         this.id = id;
         this.title = title;
         this.body = body;
         this.imgURL = imgURL;
+        this.adventurerList = adventureLog;
     }
 
     public Adventure(String title, String body, String imgURL) {
@@ -69,11 +83,28 @@ public class Adventure {
         this.imgURL = imgURL;
     }
 
-    public long getPostion() {
-        return postion;
+    public List<Adventurer> getAdventurerList() {
+        return adventurerList;
     }
 
-    public void setPostion(long postion) {
-        this.postion = postion;
+    public void setAdventurerList(List<Adventurer> adventurerList) {
+        this.adventurerList = adventurerList;
+    }
+
+
+    public long getPosition() {
+        return position;
+    }
+
+    public void setPosition(long position) {
+        this.position = position;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }

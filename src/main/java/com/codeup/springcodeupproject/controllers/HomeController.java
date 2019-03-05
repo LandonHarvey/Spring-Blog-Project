@@ -1,6 +1,6 @@
 package com.codeup.springcodeupproject.controllers;
 
-import com.codeup.springcodeupproject.repositories.PostRepository;
+import com.codeup.springcodeupproject.repositories.AdventureRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,16 +8,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
-    private final PostRepository postDao;
+    private final AdventureRepository advDao;
 
-    public HomeController (PostRepository postDao){
-        this.postDao = postDao;
+    public HomeController (AdventureRepository advDao){
+        this.advDao = advDao;
     }
 
     @GetMapping("/")
     public String all(Model model){
-
-        model.addAttribute("posts", postDao.findAll());
+        model.addAttribute("adventures", advDao.findAll());
         return "home";
     }
 }
