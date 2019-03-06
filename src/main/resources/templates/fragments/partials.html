@@ -25,25 +25,26 @@
     <br/>
     <h3 class="w3-padding-64 w3-center"><b>Landon<br/>Harvey</b></h3>
     <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-hide-large">CLOSE</a>
-    <a sec:authorize="!isAuthenticated()" href="/login" class="w3-bar-item w3-button">LOGIN/SIGNUP</a>
-    <a href="/#" onclick="w3_close()" class="w3-bar-item w3-button">ADVENTURES</a>
-    <a href="/create" class="w3-bar-item w3-button">CREATE ADVENTURES</a>
+    <a href="/#" onclick="w3_close()" class="w3-bar-item w3-button">PREVIOUS WORK</a>
     <a href="/#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT ME</a>
     <a href="/#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+    <a href="/#" onclick="w3_close()" class="w3-bar-item w3-button">ADVENTURES</a>
+    <a href="/create" class="w3-bar-item w3-button">CREATE ADVENTURES</a>
+    <a sec:authorize="!isAuthenticated()" href="/login" class="w3-bar-item w3-button">LOGIN/SIGNUP</a>
     <a sec:authorize="isAuthenticated()" href="/logout" class="w3-bar-item w3-button">LOGOUT</a>
 </nav>
 
 <!--more pages-->
-<div th:fragment="morePages" class="w3-center w3-padding-32">
-    <div class="w3-bar">
-        <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>
-        <a href="#" class="w3-bar-item w3-black w3-button">1</a>
-        <a href="#" class="w3-bar-item w3-button w3-hover-black">2</a>
-        <a href="#" class="w3-bar-item w3-button w3-hover-black">3</a>
-        <a href="#" class="w3-bar-item w3-button w3-hover-black">4</a>
-        <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
-    </div>
-</div>
+<!--<div th:fragment="morePages" class="w3-center w3-padding-32">-->
+    <!--<div class="w3-bar">-->
+        <!--<a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>-->
+        <!--<a href="#" class="w3-bar-item w3-black w3-button">1</a>-->
+        <!--<a href="#" class="w3-bar-item w3-button w3-hover-black">2</a>-->
+        <!--<a href="#" class="w3-bar-item w3-button w3-hover-black">3</a>-->
+        <!--<a href="#" class="w3-bar-item w3-button w3-hover-black">4</a>-->
+        <!--<a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>-->
+    <!--</div>-->
+<!--</div>-->
 
 </body>
 </html>

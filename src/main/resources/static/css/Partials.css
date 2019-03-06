@@ -7,6 +7,29 @@ body,h1,h2,h3,h4,h5 {
     margin-bottom: -6px; opacity: 0.8; cursor: pointer
 }
 
+.img-half {
+    width: auto;
+    max-width: 8em;
+    height: auto;
+}
+
+.portfolio-image{
+    min-height: 250px;
+    max-height: 250px;
+}
+
+.img-third {
+    width: auto;
+    max-width: 6em;
+    height: auto;
+    min-height: 7em;
+}
+
+.flexside {
+    display: flex;
+    justify-content: space-around;
+}
+
 .w3-third img:hover{
     opacity: 1
 }
@@ -70,11 +93,27 @@ body,h1,h2,h3,h4,h5 {
     visibility: hidden; display: none;
 }
 
-.floats {
+.floats, .floats2 {
     float: right;
 }
 
-.floats > p {
+.floats > p, .floats2 > p {
     margin: 0;
-    padding-right: .1em;
+}
+
+.floats2 > p {
+    padding-right: 1.5em;
+}
+
+#orcs, #characters, #actions {
+    display: flex;
+    flex-direction: column;
+}
+
+#win {
+    display: none;
+    width: 100%;
+    background-color: black;
+    color: red;
+    z-index: 10;
 }
