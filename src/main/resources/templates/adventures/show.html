@@ -4,7 +4,7 @@
 <body>
 
 <div th:replace="fragments/partials :: navbar"></div>
-<nav th:replace="/fragments/partials :: mobileNavbar"/>
+<nav th:replace="fragments/partials :: mobileNavbar"/>
 <div class="w3-main" style="margin-left: 300px;">
     <div class="w3-hide-large" style="margin-top:83px"></div>
     <main>
@@ -32,7 +32,7 @@
     <form th:action="@{/adventures/{id}/delete (id = ${adventure.id})}" method="POST">
         <button class="btn btn-danger" th:type="submit">Delete Adventure</button>
     </form>
-    <footer th:replace="/fragments/footer :: footer"></footer>
+    <footer th:replace="fragments/footer :: footer"></footer>
 </div>
     <script type="text/javascript" src="/js/map.js" />
 </body>
