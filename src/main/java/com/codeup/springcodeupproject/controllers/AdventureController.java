@@ -106,6 +106,6 @@ class AdventureController {
     @PostMapping("/adventures/{id}/delete")
     public String delete(@PathVariable long id){
         advDao.delete(id);
-        return "redirect: /";
+        return "redirect:/";
     }
 }

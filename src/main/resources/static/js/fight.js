@@ -21,7 +21,9 @@ function loadFight(a, o){
     let meleehtml ='';
     let bowhtml ='';
     let healhtml = '';
+    let formhtml = '';
     let adventureLocation = document.getElementById('characters');
+    let formpost = document.getElementById('formpost');
     let orcLocation = document.getElementById('orcs');
     let melee = document.getElementById('melee');
     let bow = document.getElementById('bow');
@@ -45,7 +47,7 @@ function loadFight(a, o){
 
     orcs.forEach(orc => {
         i++;
-        html2 += '<div>';
+        html2 += '<div class="orcblock">';
         html2 += `<img src="${orc.imgURL}" style="width:50%; max-width: 50%; height: 150px" alt="Character Avatar"/>`;
         html2 += '<div class="floats2">';
         html2 += `
@@ -58,11 +60,13 @@ function loadFight(a, o){
         meleehtml += `<button onclick="melee(${i})" class="dropdown-item" type="button" value="${i}">Orc: ${i}</button>`;
         bowhtml += `<button onclick="bow(${i})" class="dropdown-item" type="button" value="${i}">Orc: ${i}</button>`;
     });
+    formhtml += '<button class="hiddenForm" onclick="post(adventure)">sadfsdf</button>';
         adventureLocation.innerHTML = html;
         orcLocation.innerHTML = html2;
         melee.innerHTML = meleehtml;
         bow.innerHTML = bowhtml;
         heal.innerHTML = healhtml;
+        formpost.innerHTML = formhtml;
         beginFightSequence();
 }
 

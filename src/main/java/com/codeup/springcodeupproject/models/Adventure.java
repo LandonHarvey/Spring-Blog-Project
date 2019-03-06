@@ -29,7 +29,6 @@ public class Adventure {
     private String password;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JsonManagedReference
     @JoinTable(
             name="adv_adventurers",
             joinColumns={@JoinColumn(name="adventure_id")},

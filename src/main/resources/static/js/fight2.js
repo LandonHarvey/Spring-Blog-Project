@@ -1,33 +1,48 @@
 let firstcharactersTurn = false;
 let secondcharactersTurn = false;
+let orcblock = document.getElementsByClassName('orcblock');
 let i = 0;
+let orcsDead = 0;
 
 function beginFightSequence(){
-    console.log("HELLO FROM ME");
-    if (firstcharactersTurn && secondcharactersTurn || adventure.adventurerList.length === 1){
+    if (adventure.adventurerList[0].health === 0 && (adventure.adventurerList[1] === 0 || adventure.adventurerList[1] == null))
+    {
+        window.location.href = `/adventures/${adventure.id}/delete`
+    }
+    if (firstcharactersTurn && secondcharactersTurn){
         document.querySelectorAll('.btn').forEach(elem => {
             elem.style.display = 'none';
         });
         orcs.forEach(orc => {
             let random = Math.round(Math.random() * (1) + 1);
             i++;
-            if (orcs[i - 1].health < 5 && orcs[i -1].healing !== 0){
-                let health = document.getElementsByClassName('orchealth');
-                health[i - 1].innerText  = orcs[i - 1].health += 5;
+            if (orc.health <= 0) {
+                orcsDead++;
+                orcblock[i - 1].style.display = 'none';
             }else {
-                console.log(random);
-                switch (random) {
-                    case 1:
-                        orcArrow(i);
-                        break;
-                    case 2:
-                        orcMelee(i);
-                        break;
+                if (orcs[i - 1].health < 5 && orcs[i - 1].healing !== 0) {
+                    let health = document.getElementsByClassName('orchealth');
+                    health[i - 1].innerText = orcs[i - 1].health += 5;
+                } else {
+                    console.log(random);
+                    switch (random) {
+                        case 1:
+                            orcArrow(i);
+                            break;
+                        case 2:
+                            orcMelee(i);
+                            break;
+                    }
                 }
             }
+            if (orcsDead === orcs.length){
+                document.getElementsByClassName("hiddenForm")[0].click();
+                setTimeout(2000);
+            }else {
+                i = 0;
+                beginFightSequence();
+            }
         });
-        i = 0;
-        beginFightSequence();
     }
 
     document.querySelectorAll('.btn').forEach(elem => {
@@ -53,18 +68,26 @@ function heals(e) {
 
 // shoots chosen orc
 function bow(e) {
-    let healing = document.getElementsByClassName('chararrows');
-    if (arrows[e - 1].innerText != 0){
-        arrows[e - 1].innerText  = adventure.adventurerList[e-1].arrows -= 1;
-        let health = document.getElementsByClassName('orchealth');
-        health[e - 1].innerText  = orcs[e - 1].health -= 8;
-        if (firstcharactersTurn) {
-            secondcharactersTurn = true;
-        } else {
-            firstcharactersTurn = true;
+    let arrows = document.getElementsByClassName('chararrows');
+    if (firstcharactersTurn && adventure.adventurerList[1] != null) {
+        if (arrows[1].innerText !== '0') {
+            arrows[1].innerText = adventure.adventurerList[1].arrows -= 1;
+        }
+        beginFightSequence();
+    } else {
+        if (arrows[0].innerText !== '0') {
+            arrows[0].innerText = adventure.adventurerList[0].arrows -= 1;
         }
         beginFightSequence();
     }
+    let health = document.getElementsByClassName('orchealth');
+    health[e - 1].innerText = orcs[e - 1].health -= 8;
+    if (firstcharactersTurn) {
+        secondcharactersTurn = true;
+    } else {
+        firstcharactersTurn = true;
+    }
+    beginFightSequence();
 }
 
 // hits chosen orc
@@ -108,3 +131,17 @@ function orcMelee(i) {
     firstcharactersTurn = false;
     secondcharactersTurn = false;
 }
+
+function post(adventure) {
+    fetch(`/adventures/${adventure.id}/fightwon`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(adventure)
+    }).then( response => {
+        window.location.href = `/adventures/${adventure.id}`
+    });
+}
+
+
