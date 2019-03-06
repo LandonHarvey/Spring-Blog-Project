@@ -19,6 +19,7 @@ function loadFight(a, o){
     let html = '';
     let html2 = '';
     let meleehtml ='';
+    let bowhtml ='';
     let healhtml = '';
     let adventureLocation = document.getElementById('characters');
     let orcLocation = document.getElementById('orcs');
@@ -31,15 +32,15 @@ function loadFight(a, o){
         html += '<div>';
         html += `<img src="${char.imgURL}" style="width:50%; max-width: 50%; height: 150px" alt="Character Avatar"/>`;
         html += '<div class="floats">';
-        html += `<p>Name: <span>${char.name}</span></p>
-                 <p>Level: <span>${char.level}</span></p>
-                 <p>Health: <span>${char.health}</span></p>
-                 <p>Healing: <span>${char.healing}</span></p>
-                 <p>Arrows: <span>${char.arrows}</span></p>
+        html += `<p>Name: <span class="charname">${char.name}</span></p>
+                 <p>Level: <span class="charlevel">${char.level}</span></p>
+                 <p>Health: <span class="charhealth">${char.health}</span></p>
+                 <p>Healing: <span class="charhealing">${char.healing}</span></p>
+                 <p>Arrows: <span class="chararrows">${char.arrows}</span></p>
                  <input type="hidden" value="${char.id}"/>`;
         html += '</div>'
         html += '</div>';
-        healhtml += `<button class="dropdown-item" type="button" value="${e}">Adventurer: ${char.name}</button>`;
+        healhtml += `<button onclick="heals(${e})" class="dropdown-item" type="button" value="${e}">Adventurer: ${char.name}</button>`;
     });
 
     orcs.forEach(orc => {
@@ -48,28 +49,21 @@ function loadFight(a, o){
         html2 += `<img src="${orc.imgURL}" style="width:50%; max-width: 50%; height: 150px" alt="Character Avatar"/>`;
         html2 += '<div class="floats2">';
         html2 += `
-                 <p>Health: <span>${(Math.round(orc.health - (orcs.length * 1.1)))}</span></p>
-                 <p>Healing: <span>${orc.healing}</span></p>
-                 <p>Arrows: <span>${orc.arrows}</span></p>
+                 <p>Health: <span class="orchealth">${(Math.round(orc.health - (orcs.length * 1.1)))}</span></p>
+                 <p>Healing: <span class="orchealing">${orc.healing}</span></p>
+                 <p>Arrows: <span class="orcarrows">${orc.arrows}</span></p>
                  <input type="hidden" value="${orc.id}"/>`;
         html2 += '</div>';
         html2 += '</div>';
-        meleehtml += `<button class="dropdown-item" type="button" value="${i}">Orc: ${i}</button>`;
+        meleehtml += `<button onclick="melee(${i})" class="dropdown-item" type="button" value="${i}">Orc: ${i}</button>`;
+        bowhtml += `<button onclick="bow(${i})" class="dropdown-item" type="button" value="${i}">Orc: ${i}</button>`;
     });
         adventureLocation.innerHTML = html;
         orcLocation.innerHTML = html2;
         melee.innerHTML = meleehtml;
-        bow.innerHTML = meleehtml;
+        bow.innerHTML = bowhtml;
         heal.innerHTML = healhtml;
         beginFightSequence();
-}
-
-function beginFightSequence(){
-    // document.getElementsByClassName('btn').style.display = 'none';
-    document.querySelectorAll('.btn').forEach(elem => {
-        elem.style.display = 'display';
-    });
-    // addEventListener("click", )
 }
 
 fetch(url, options)
@@ -81,11 +75,9 @@ fetch(url, options)
             console.log(datao);
             orcs = datao;
             adventure = dataa;
-            console.log(orcs);
-            console.log(adventure);
+            // console.log(orcs);
+            // console.log(adventure);
             loadFight(adventure, orcs);
         })})
     })
     .catch(err => console.log(err));
-
-

@@ -1,3 +1,7 @@
+
+
+USE adventures_db;
+
 INSERT INTO orc (arrows, healing, health, imgurl)
 VALUES (25, 2, 15, '/img/urak1.jpg'),
        (50, 1, 7, '/img/orc2.jpg'),

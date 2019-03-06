@@ -41,7 +41,7 @@ var grid = clickableGrid(18,18,function(el,row,col,i){
 
     //places orcs on map based on location
     for (let p = 0; p < orcs; p++) {
-        let num = Math.round(Math.random() * (3 - 0) + 0);
+        let num = Math.round(Math.random() * (3));
         orcsLocation.push(Math.round(Math.random() * (324 - 1) + 1))
 
         // places images on orcs based on random number

@@ -22,7 +22,7 @@ public class Adventure {
     @Column(nullable = false, length = 200)
     private String imgURL;
 
-    @Column(name = "position", nullable = false, length = 5 , columnDefinition = "int default 95'")
+    @Column(name = "position", nullable = false, length = 5)
     private long position = 95;
 
     @Column(nullable = true, length = 4)
