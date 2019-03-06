@@ -13,6 +13,11 @@ body,h1,h2,h3,h4,h5 {
     height: auto;
 }
 
+.portfolio-image{
+    min-height: 250px;
+    max-height: 250px;
+}
+
 .img-third {
     width: auto;
     max-width: 6em;

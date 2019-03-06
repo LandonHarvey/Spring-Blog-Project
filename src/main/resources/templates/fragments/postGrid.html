@@ -6,6 +6,32 @@
 </head>
 <body>
 <div th:fragment="gridRow">
+    <div class="w3-third">
+        <img class="portfolio-image" src="/img/fullmenu.png" alt="via-quick-trip-image" style="width:100%"/>
+        <a href="https://via-quick-trips.herokuapp.com"><h1>Via Quick Trip</h1></a>
+        <a href="https://github.com/vianoobs/ViaQuickTrips"><h4>Source Code</h4></a>
+        <p>Third Place: Quick Trip Category. Utilized Vue, Vuex, Vuetify, Node and Express. Application was created to help Via customers and individuals find "quick" trips around
+        San Antonio. Selections Include: Food, Drinks and Attractions. Will locate 20 Attractions within 8 mile radius and allow user to
+        filter by price and category. Allows for user sign in, utilizing passport for google and facebook login. Once logged in will save previous routes and allow
+        user to easily return to trips they have completed.</p>
+    </div>
+    <div class="w3-third">
+        <img class="portfolio-image" src="/img/UserProfile.png" alt="reddit-clone" style="width:100%"/>
+        <a href="https://github.com/LandonHarvey/java-adlister-final-project"><h1>Reddit 0.5: Ghost Post</h1></a>
+        <a href="https://github.com/LandonHarvey/java-adlister-final-project"><h4>Source Code</h4></a>
+        <p>Fully functional Reddit Clone. Providing user accounts with Posting, Infinite Nesting Comments, Reporting, Profile Pictures,
+            Upvote and Downvoting of posts. Admin functionality including monitoring reported content (Users, Posts, Comments), Admin levels,
+            Admin creation and tiny purple ghosts.</p>
+    </div>
+    <div class="w3-third">
+        <img class="portfolio-image" src="/img/budgetOverview.png" alt="vue-budget-app" style="width:100%"/>
+        <a href="https://github.com/LandonHarvey/java-adlister-final-project"><h1>Vue Budget App</h1></a>
+        <a href="https://github.com/LandonHarvey/VueBudgetApp"><h4>Source Code</h4></a>
+        <p>A working prototype of a budget application made utilizing Vue.js, Vuex. Allows for budgeting with Categories, Sub-Categories,
+        Transactions. Graphing of Total, Remaining and Spent. with Progress Bars for user experience. Prototype Purchase feature,
+        allowing for searching of products on Ebay using Ebay's Search API. Future will allow price comparison for users to help better manage
+        their finances.</p>
+    </div>
     <div th:each="adventure : ${adventures}" class="w3-third">
         <img th:src="${adventure.imgURL}" style="width:100%" onclick="onClick(this)" alt="A boy surrounded by beautiful nature"/>
         <a th:href="@{adventures/{id} (id = ${adventure.getId()})}"><h1 th:text="${adventure.title}"></h1></a>
