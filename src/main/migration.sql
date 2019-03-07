@@ -28,13 +28,13 @@ INSERT INTO adv_adventurers(adventure_id, adventurer_id)
 VALUES (1,2);
 
 INSERT INTO orc(health,healing,arrows,imgurl)
-VALUES (10, 2,20,'/resources/static/img/orc.jpg');
+VALUES (10, 2,20,'/resources/staticwebpage/img/orc.jpg');
 
 INSERT INTO orc(health,healing,arrows,imgurl)
-VALUES (5, 2,50,'/resources/static/img/orc2.jpg');
+VALUES (5, 2,50,'/resources/staticwebpage/img/orc2.jpg');
 
 INSERT INTO orc(health,healing,arrows,imgurl)
-VALUES (15, 1,0,'/resources/static/img/urak1,jpg');
+VALUES (15, 1,0,'/resources/staticwebpage/img/urak1,jpg');
 
 SELECT
       a.id as id, adv.id as advid, adv.body as advbody, adv.imgurl as advimage, adv.title as advtitle, adv.adventurelog_id as adid,
