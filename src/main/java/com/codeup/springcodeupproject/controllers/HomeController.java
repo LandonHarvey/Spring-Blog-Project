@@ -1,6 +1,5 @@
 package com.codeup.springcodeupproject.controllers;
 
-import com.codeup.springcodeupproject.Services.EmailService;
 import com.codeup.springcodeupproject.repositories.AdventureRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
