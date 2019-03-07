@@ -22,16 +22,16 @@ public class HomeController {
 
     @GetMapping("/via")
     public String via(){
-        return "static/via";
+        return "/static/via";
     }
 
     @GetMapping("/reddit")
     public String reddit(){
-        return "static/reddit";
+        return "/static/reddit";
     }
 
     @GetMapping("/budget")
     public String budget(){
-        return "static/budget";
+        return "/static/budget";
     }
 }
