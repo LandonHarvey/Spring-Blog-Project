@@ -6,7 +6,7 @@ let orcsDead = 0;
 
 function beginFightSequence(){
     i =0;
-    if (adventure.adventurerList[0].health === 0 && (adventure.adventurerList[1] === 0 || adventure.adventurerList[1] == null))
+    if (adventure.adventurerList[0].health <= 0 && (adventure.adventurerList[1] <= 0 || adventure.adventurerList[1] == null))
     {
         window.location.href = `/adventures/${adventure.id}/delete`
     }

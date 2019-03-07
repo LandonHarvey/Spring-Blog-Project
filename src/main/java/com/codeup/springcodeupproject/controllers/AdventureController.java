@@ -21,6 +21,15 @@ class AdventureController {
         this.advrDao = advrDao;
     }
 
+    @GetMapping("adventures")
+    public String adventure(Model model){
+
+        model.addAttribute("adventures", advDao.findAll());
+
+        return "adventures/Adventures";
+    }
+
+
     @GetMapping("adventures/{id}")
     public String show(@PathVariable long id, Model model){
 //
@@ -71,12 +80,12 @@ class AdventureController {
             adventurerList.add(adventurer2);
             adventure.setAdventurerList(adventurerList);
             advDao.save(adventure);
-            return "redirect:/";
+            return "redirect:/adventures";
         }
 
         adventure.setAdventurerList(adventurerList);
         advDao.save(adventure);
-        return "redirect:/";
+        return "redirect:/adventures";
     }
 
     @GetMapping("adventures/{id}/fight")
@@ -113,4 +122,12 @@ class AdventureController {
         advDao.delete(id);
         return "redirect:/";
     }
+
+    @GetMapping("/adventures/{id}/delete")
+    public String deleteAdventure(@PathVariable long id){
+        advDao.delete(id);
+        return "redirect:/";
+    }
+
+
 }

@@ -5,23 +5,17 @@
     <title>Title</title>
 </head>
 <body>
-<div th:fragment="gridRow">
-    <h4 style="text-align: center; margin: .4em 0;"><b>Previous / Current Work</b></h4>
-    <div class="w3-third">
-        <img class="portfolio-image" src="/img/fullmenu.png" onclick="window.location.href= '/via'" alt="via-quick-trip-image" style="width:100%"/>
+    <div th:fragment="gridRow">
+        <h4 style="text-align: center; margin: .4em 0;"><b>Previous / Current Work</b></h4>
+        <div class="w3-third">
+            <img class="portfolio-image" src="/img/fullmenu.png" onclick="window.location.href= '/via'" alt="via-quick-trip-image" style="width:100%"/>
+        </div>
+        <div class="w3-third">
+            <img class="portfolio-image" src="/img/userprofile.png" onclick="window.location.href= '/reddit'"  alt="reddit-clone" style="width:100%"/>
+        </div>
+        <div class="w3-third">
+            <img class="portfolio-image" src="/img/budgetOverview.png" onclick="window.location.href= '/budget'" alt="vue-budget-app" style="width:100%"/>
+        </div>
     </div>
-    <div class="w3-third">
-        <img class="portfolio-image" src="/img/userprofile.png" onclick="window.location.href= '/reddit'"  alt="reddit-clone" style="width:100%"/>
-    </div>
-    <div class="w3-third">
-        <img class="portfolio-image" src="/img/budgetOverview.png" onclick="window.location.href= '/budget'" alt="vue-budget-app" style="width:100%"/>
-    </div>
-    <div th:each="adventure : ${adventures}" class="w3-third">
-        <img th:src="${adventure.imgURL}" style="width:100%" onclick="onClick(this)" alt="adventure image"/>
-        <a th:href="@{adventures/{id} (id = ${adventure.getId()})}"><h1 th:text="${adventure.title}"></h1></a>
-        <p th:text="${adventure.body}"></p>
-        <hr/>
-    </div>
-</div>
 </body>
 </html>

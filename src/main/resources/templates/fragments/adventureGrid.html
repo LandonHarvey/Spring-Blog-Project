@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <div th:each="adventure : ${adventures}" class="w3-third">
+        <img th:src="${adventure.imgURL}" style="width:100%" onclick="onClick(this)" alt="adventure image"/>
+        <a th:href="@{adventures/{id} (id = ${adventure.getId()})}"><h1 th:text="${adventure.title}"></h1></a>
+        <p th:text="${adventure.body}"></p>
+        <hr/>
+    </div>
+</div>
+</body>
+</html>

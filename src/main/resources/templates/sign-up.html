@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/partials :: header('Create a new adventure')"></head>
+<head th:replace="fragments/partials :: header('Sign Up')"></head>
 
 <body>
 <nav th:replace="fragments/partials :: navbar" />
@@ -8,25 +8,26 @@
 
 <div class="w3-main" style="margin-left:300px">
     <div class="w3-hide-large" style="margin-top:83px"></div>
-    <h1>Create an account</h1>
-    <form th:action="@{/sign-up}" method="POST" th:object="${user}">
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input id="username" th:field="*{username}"/>
-        </div>
+    <h1 class="ml-2">Create an account</h1>
+    <div class="mr-4 ml-2 mb-2">
+        <form th:action="@{/sign-up}" method="POST" th:object="${user}">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input class="form-control" placeholder="Enter Username" id="username" th:field="*{username}"/>
+            </div>
 
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input id="email" th:field="*{email}"/>
-        </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input class="form-control" id="email" placeholder="Enter Email" th:field="*{email}"/>
+            </div>
 
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input id="password" type="password" th:field="*{password}"/>
-        </div>
-
-        <input value="Sign me up!" type="submit" />
-    </form>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input class="form-control" id="password" type="password" placeholder="Password" th:field="*{password}"/>
+            </div>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+        </form>
+    </div>
 <footer th:replace="fragments/footer :: footer"></footer>
 </div>
 </body>
