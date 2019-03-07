@@ -19,4 +19,19 @@ public class HomeController {
         model.addAttribute("adventures", advDao.findAll());
         return "home";
     }
+
+    @GetMapping("/via")
+    public String via(){
+        return "static/via";
+    }
+
+    @GetMapping("/reddit")
+    public String reddit(){
+        return "static/reddit";
+    }
+
+    @GetMapping("/budget")
+    public String budget(){
+        return "static/budget";
+    }
 }

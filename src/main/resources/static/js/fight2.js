@@ -5,6 +5,7 @@ let i = 0;
 let orcsDead = 0;
 
 function beginFightSequence(){
+    i =0;
     if (adventure.adventurerList[0].health === 0 && (adventure.adventurerList[1] === 0 || adventure.adventurerList[1] == null))
     {
         window.location.href = `/adventures/${adventure.id}/delete`
@@ -17,10 +18,13 @@ function beginFightSequence(){
             let random = Math.round(Math.random() * (1) + 1);
             i++;
             if (orc.health <= 0) {
+                console.log(orc);
+                console.log(orc.health);
                 orcsDead++;
+                console.log(orcsDead + "orcs dead")
                 orcblock[i - 1].style.display = 'none';
             }else {
-                if (orcs[i - 1].health < 5 && orcs[i - 1].healing !== 0) {
+                if (orcs[i - 1].health < 5 && orcs[i - 1].healing >= 1) {
                     let health = document.getElementsByClassName('orchealth');
                     health[i - 1].innerText = orcs[i - 1].health += 5;
                 } else {
@@ -38,13 +42,10 @@ function beginFightSequence(){
             if (orcsDead === orcs.length){
                 document.getElementsByClassName("hiddenForm")[0].click();
                 setTimeout(2000);
-            }else {
-                i = 0;
-                beginFightSequence();
             }
+            orcsDead = 0;
         });
     }
-
     document.querySelectorAll('.btn').forEach(elem => {
         elem.style.display = 'block';
     });

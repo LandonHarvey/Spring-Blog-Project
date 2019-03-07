@@ -79,6 +79,11 @@ class AdventureController {
         return "redirect:/";
     }
 
+    @GetMapping("adventures/{id}/fight")
+    public String fight(@PathVariable long id){
+        return "fight";
+    }
+
     // posts save when save progress button clicked
     @PostMapping("/adventures/{id}/save")
     public String savePosition(

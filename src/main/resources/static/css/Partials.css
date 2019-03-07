@@ -110,6 +110,16 @@ body,h1,h2,h3,h4,h5 {
     flex-direction: column;
 }
 
+.card > img {
+    min-height: 180px;
+}
+
+.card-group > .card {
+    background: #616161;
+    border:none;
+    /*word-break: break-all;*/
+}
+
 #win {
     display: none;
     width: 100%;
