@@ -138,7 +138,7 @@ function post(adventure) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-        },
+        }m,
         body: JSON.stringify(adventure)
     }).then( response => {
         window.location.href = `/adventures/${adventure.id}`
