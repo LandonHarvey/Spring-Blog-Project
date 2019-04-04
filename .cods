@@ -1,2 +1,2 @@
-BUILD_COMMAND='mvn clean install'
+BUILD_COMMAND='./mvnw package'
 JAR_FILE=target/spring-codeup-project-0.0.1-SNAPSHOT.jar
