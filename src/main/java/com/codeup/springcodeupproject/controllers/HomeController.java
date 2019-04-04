@@ -34,4 +34,9 @@ public class HomeController {
     public String budget(){
         return "static/Budget";
     }
+
+    @GetMapping("/weekndr")
+    public String weekndr(){
+        return "static/Weekndr";
+    }
 }
