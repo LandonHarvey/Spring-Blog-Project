@@ -34,7 +34,8 @@ class AdventureController {
     public String show(@PathVariable long id, Model model){
 //
 //        List<Adventurer> adventurers = advrDao.getAllAdventurerById(id);
-        Adventure adventure = advDao.findOne(id);
+//        Adventure adventure = advDao.findOne(id);
+        Adventure adventure = advDao.findById(id);
         System.out.println("Adventurer List: " +adventure.getAdventurerList());
 
         model.addAttribute("adventure", adventure);
@@ -99,7 +100,8 @@ class AdventureController {
             @PathVariable long id,
             @RequestParam(name = "position") long position
     ){
-        Adventure adventure = advDao.findOne(id);
+//        Adventure adventure = advDao.findOne(id);
+        Adventure adventure = advDao.findById(id);
         adventure.setPosition(position);
         advDao.save(adventure);
         return "redirect:/adventures/{id}";
@@ -111,7 +113,8 @@ class AdventureController {
             @PathVariable long id,
             @RequestParam(name = "position") long position
     ){
-        Adventure adventure = advDao.findOne(id);
+//        Adventure adventure = advDao.findOne(id);
+        Adventure adventure = advDao.findById(id);
         adventure.setPosition(position);
         advDao.save(adventure);
         return "redirect:/adventures/{id}/fight";
@@ -119,13 +122,13 @@ class AdventureController {
 
     @PostMapping("/adventures/{id}/delete")
     public String delete(@PathVariable long id){
-        advDao.delete(id);
+        advDao.delete(advDao.findById(id));
         return "redirect:/";
     }
 
     @GetMapping("/adventures/{id}/delete")
     public String deleteAdventure(@PathVariable long id){
-        advDao.delete(id);
+        advDao.delete(advDao.findById(id));
         return "redirect:/";
     }
 

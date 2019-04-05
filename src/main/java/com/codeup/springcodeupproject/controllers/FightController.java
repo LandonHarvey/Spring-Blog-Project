@@ -25,7 +25,9 @@ class FightController {
     @GetMapping("/{id}/fight.json")
     public @ResponseBody  Adventure viewFullFight(@PathVariable() long id){
 
-        return fightDao.findOne(id);
+
+//        return fightDao.findOne(id);
+        return fightDao.findById(id);
     }
 
     @GetMapping("/orc.json")
@@ -34,7 +36,8 @@ class FightController {
         long random = Math.round(Math.random() * (2) + 1);
         for(int i = 0; i< random; i++){
             long randomorc = Math.round(Math.random() * (3) + 1);
-            orcs.add(orcDao.findOne(randomorc));
+//            orcs.add(orcDao.findOne(randomorc));
+              orcs.add(orcDao.findById(randomorc));
         }
         return orcs;
     }
