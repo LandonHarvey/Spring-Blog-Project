@@ -32,8 +32,8 @@
     <form th:action="@{/adventures/{id}/delete (id = ${adventure.id})}" method="POST">
         <button class="btn btn-danger" th:type="submit">Delete Adventure</button>
     </form>
-    <footer th:replace="fragments/footer :: footer"></footer>
 </div>
-    <script type="text/javascript" src="/js/map.js" />
+    <footer th:replace="fragments/footer :: footer"></footer>
+    <script type="text/javascript" src="/js/map.js"></script>
 </body>
 </html>
